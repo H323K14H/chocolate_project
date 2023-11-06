@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Component
-public class DataLoader  implements ApplicationRunner {
+public class DataLoader implements ApplicationRunner {
 
     @Autowired
     ChocolateService chocolateService;
@@ -23,14 +23,19 @@ public class DataLoader  implements ApplicationRunner {
     @Autowired
     ChocolateRepository chocolateRepository;
 
-    public void run (ApplicationArguments args){
-        Estate estate1 = new Estate("farm","Nigeria");
-        Estate estate2 = new Estate("Germa","Ohio");
+    public void run(ApplicationArguments args) {
+        Estate estate1 = new Estate("farm", "Nigeria");
+        Estate estate2 = new Estate("Germa", "Ohio");
 
-      estateService.save(estate1);
-      estateService.save(estate2);
+        estateService.save(estate1);
+        estateService.save(estate2);
+
+        Chocolate chocolate = new Chocolate("Bueno", 98, estate2);
+
+        chocolateRepository.save(chocolate);
+
+
     }
-
 
 
 }

@@ -7,6 +7,9 @@ import com.bnta.chocolate.repositories.EstateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ChocolateService {
 
@@ -14,10 +17,15 @@ public class ChocolateService {
     @Autowired
     ChocolateRepository chocolateRepository;
 
+    public List<Chocolate> getAllChocolate() {
+        return chocolateRepository.findAll();
+    }
 
+    public Optional<Chocolate> getChocolateById(Long id) {
+        return chocolateRepository.findById(id);
+    }
 
-
-    public Chocolate saveChocolate(Chocolate chocolate){
+    public Chocolate saveChocolate(Chocolate chocolate) {
         chocolateRepository.save(chocolate);
         return chocolate;
     }
